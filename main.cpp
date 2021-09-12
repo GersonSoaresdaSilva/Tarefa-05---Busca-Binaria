@@ -112,7 +112,7 @@ void classificar() {
                     auxLetras = tab.Letras [i];
                     tab.Letras [i] = tab.Letras [j];
                     tab.Letras [j] = auxLetras;
-                    
+
                     auxX = tab.X [i];
                     tab.X [i] = tab.X [j];
                     tab.X [j] = auxX;
