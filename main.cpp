@@ -1,4 +1,5 @@
-/*Faça o código fonte estruturado de algoritmo que contenha um STRUCT contendo um atributo do tipo inteiro X e outro atributo do tipo string LETRAS. O usuário deverá digitar uma lista de 5 números e 5 Letras ou palavras. Crie um menu com opções para classificar a coluna X e também para classificar a coluna LETRAS. Coloque opções para buscar uma letra ou palavra dentro do campo LETRAS e outra opção para buscar um número dentro da coluna X, usando nas duas buscas o algoritmo de busca binária.*/
+/*Faça o código fonte estruturado de algoritmo que contenha um STRUCT contendo um atributo do tipo inteiro X e outro atributo do tipo string LETRAS. O usuário deverá digitar uma lista de 5 números e 5 Letras ou palavras. Crie um menu com opções para classificar a coluna X e também para classificar a coluna LETRAS. Coloque opções para buscar uma letra ou palavra dentro do campo LETRAS e outra opção para buscar um número dentro da coluna X,
+usando nas duas buscas o algoritmo de busca binária.*/
 
 #include <cstdlib>
 #include <iostream>
@@ -29,7 +30,7 @@ void buscaBin();
 void controle();
 
 int main() {
-    system ("clear");
+    system("clear");
     setlocale(LC_ALL, "Portuguese");
     controle();
     return 0;
@@ -83,24 +84,50 @@ void exibir() {
 }
 
 void classificar() {
-    int auxX;
+    int opClass, auxX;
     string auxLetras;
-    for (int i = 0; i <= (n - 2); i++) {
-        for (int j = i; j <= (n - 1); j++) {
-            if (tab.X [i] > tab.X [j]) {
-                auxX = tab.X [i];
-                tab.X [i] = tab.X [j];
-                tab.X [j] = auxX;
+    cout << "\nInforme a opção de Classificação: \n1 - Classificar por número"
+            " \n2 - Classificar por letra / palavra \nOpção.: ";
+    cin >> opClass;
+    if (opClass == 1) {
 
-                auxLetras = tab.Letras [i];
-                tab.Letras [i] = tab.Letras [j];
-                tab.Letras [j] = auxLetras;
+        for (int i = 0; i <= (n - 2); i++) {
+            for (int j = i; j <= (n - 1); j++) {
+                if (tab.X [i] > tab.X [j]) {
+                    auxX = tab.X [i];
+                    tab.X [i] = tab.X [j];
+                    tab.X [j] = auxX;
+
+                    auxLetras = tab.Letras [i];
+                    tab.Letras [i] = tab.Letras [j];
+                    tab.Letras [j] = auxLetras;
+                }
             }
         }
+    } else if (opClass == 2) {
+
+        for (int i = 0; i <= (n - 2); i++) {
+            for (int j = i; j <= (n - 1); j++) {
+                if (tab.Letras [i] > tab.Letras [j]) {
+                    auxLetras = tab.Letras [i];
+                    tab.Letras [i] = tab.Letras [j];
+                    tab.Letras [j] = auxLetras;
+                    
+                    auxX = tab.X [i];
+                    tab.X [i] = tab.X [j];
+                    tab.X [j] = auxX;
+                }
+            }
+        }
+    } else {
+        cout << "\nOpção Inválida!" << endl;
+        system("sleep 4");
+        return;
     }
     system("clear");
     cout << "\nÍtens classificados com Sucesso!" << endl;
     system("sleep 4");
+    return;
 }
 
 int buscaBinX(int nmX) {
@@ -147,7 +174,7 @@ void buscaBin() {
         } else {
             cout << "\nO valor " << xBusca << " foi localizado na posição " << valBusca << endl;
         }
-        system ("sleep 4");
+        system("sleep 4");
 
     } else if (opBusca == 2) {
         cin.ignore();
@@ -158,7 +185,7 @@ void buscaBin() {
         } else {
             cout << "\nA letra / palavra " << letBusca << " foi localizada na posição " << valBusca << endl;
         }
-        system ("sleep 4");
+        system("sleep 4");
 
     } else {
         cout << "\nOpção Inválida!" << endl;
