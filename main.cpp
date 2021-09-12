@@ -63,6 +63,7 @@ void novoReg() {
         cin.ignore();
         string let_ = lerLetras();
         tab.Letras [pos] = let_;
+        return;
     }
 }
 
@@ -72,7 +73,7 @@ void exibir() {
     system("clear");
     cout << "\nLista de Números e Letras:";
     cout << "\nPos  --  Número  --  Letras" << endl;
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i <= n - 1; i++) {
         exibirX = tab.X [i];
         exibirLetras = tab.Letras [i];
         cout << "[" << i << "]  --  " << "[" << exibirX << "]"
